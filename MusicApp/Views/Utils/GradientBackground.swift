@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct GradientBackground: View {
+    var color: Color
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LinearGradient(
+            gradient: Gradient(
+                stops: [
+                    Gradient.Stop(color: color, location: 0.0),
+                    Gradient.Stop(color: .black, location: 0.5)
+                ]
+            ),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    GradientBackground()
+    GradientBackground(color: .blue)
 }
