@@ -15,6 +15,11 @@
 		1F3C9F102C589DD400D6EAA7 /* MusicAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C9F0F2C589DD400D6EAA7 /* MusicAppTests.swift */; };
 		1F3C9F1A2C589DD400D6EAA7 /* MusicAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C9F192C589DD400D6EAA7 /* MusicAppUITests.swift */; };
 		1F3C9F1C2C589DD400D6EAA7 /* MusicAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C9F1B2C589DD400D6EAA7 /* MusicAppUITestsLaunchTests.swift */; };
+		1FFB89C72C5AD09C00E2AE83 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB89C62C5AD09C00E2AE83 /* GradientBackground.swift */; };
+		1FFB89C92C5AD17800E2AE83 /* ArtistList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB89C82C5AD17800E2AE83 /* ArtistList.swift */; };
+		1FFB89CB2C5AD1B300E2AE83 /* FollowersObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB89CA2C5AD1B300E2AE83 /* FollowersObject.swift */; };
+		1FFB89CD2C5AD1BF00E2AE83 /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB89CC2C5AD1BF00E2AE83 /* ImageObject.swift */; };
+		1FFB89CF2C5AE70700E2AE83 /* GenreTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB89CE2C5AE70700E2AE83 /* GenreTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,11 @@
 		1F3C9F152C589DD400D6EAA7 /* MusicAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3C9F192C589DD400D6EAA7 /* MusicAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAppUITests.swift; sourceTree = "<group>"; };
 		1F3C9F1B2C589DD400D6EAA7 /* MusicAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1FFB89C62C5AD09C00E2AE83 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
+		1FFB89C82C5AD17800E2AE83 /* ArtistList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistList.swift; sourceTree = "<group>"; };
+		1FFB89CA2C5AD1B300E2AE83 /* FollowersObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersObject.swift; sourceTree = "<group>"; };
+		1FFB89CC2C5AD1BF00E2AE83 /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
+		1FFB89CE2C5AE70700E2AE83 /* GenreTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				1F0E1EFD2C5A031A00A046CC /* Artist.swift */,
+				1FFB89CC2C5AD1BF00E2AE83 /* ImageObject.swift */,
+				1FFB89CA2C5AD1B300E2AE83 /* FollowersObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				1F0E1F002C5A052300A046CC /* Home */,
+				1FFB89C52C5AD08B00E2AE83 /* Utils */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				1F3C9F002C589DD100D6EAA7 /* HomeView.swift */,
+				1FFB89C82C5AD17800E2AE83 /* ArtistList.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -152,6 +166,15 @@
 				1F3C9F1B2C589DD400D6EAA7 /* MusicAppUITestsLaunchTests.swift */,
 			);
 			path = MusicAppUITests;
+			sourceTree = "<group>";
+		};
+		1FFB89C52C5AD08B00E2AE83 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1FFB89C62C5AD09C00E2AE83 /* GradientBackground.swift */,
+				1FFB89CE2C5AE70700E2AE83 /* GenreTag.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,8 +308,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0E1EFE2C5A031A00A046CC /* Artist.swift in Sources */,
+				1FFB89C72C5AD09C00E2AE83 /* GradientBackground.swift in Sources */,
 				1F3C9F012C589DD100D6EAA7 /* HomeView.swift in Sources */,
+				1FFB89CD2C5AD1BF00E2AE83 /* ImageObject.swift in Sources */,
+				1FFB89CF2C5AE70700E2AE83 /* GenreTag.swift in Sources */,
 				1F3C9EFF2C589DD100D6EAA7 /* MusicAppApp.swift in Sources */,
+				1FFB89CB2C5AD1B300E2AE83 /* FollowersObject.swift in Sources */,
+				1FFB89C92C5AD17800E2AE83 /* ArtistList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

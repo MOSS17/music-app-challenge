@@ -8,23 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
-    var gradient = Gradient(
-        stops: [
-            Gradient.Stop(color: .blue, location: 0.0),
-            Gradient.Stop(color: .black, location: 0.5)
-        ]
-    )
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            LinearGradient(
-                gradient: gradient,
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-            HomeHeader()
-            .padding()
+            GradientBackground(color: .blue)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    HomeHeader()
+                        .padding()
+                    ArtistList()
+                }
+            }
         }
     }
     
