@@ -7,21 +7,10 @@
 
 import Foundation
 
-struct Artist: Codable {
+struct Artist: Codable, Identifiable {
     let id: String
     let name: String
     let images: [ImageObject]
     let genres: [String]
     let followers: FollowersObject
-}
-
-struct FollowersObject: Codable {
-    let href: String?
-    let total: Int
-}
-
-struct ImageObject: Codable {
-    let height: Int
-    let url: String
-    let width: Int
 }
