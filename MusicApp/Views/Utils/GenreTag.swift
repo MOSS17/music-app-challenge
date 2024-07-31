@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct GenrePill: View {
+struct GenreTag: View {
+    var genre: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(genre)
+            .font(.footnote)
+            .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+            .lineLimit(1)
+            .background(
+                RoundedRectangle(cornerRadius: 10).stroke()
+            )
     }
 }
 
 #Preview {
-    GenrePill()
+    GenreTag(genre: "alternative rock")
 }
