@@ -14,16 +14,16 @@ struct ArtistImage: View {
             AsyncImage(url: URL(string: imageUrl.url), transaction: .init(animation: .bouncy(duration: 1))) { phase in
                 if let image = phase.image {
                     image.resizable()
-                        .cornerRadius(20)
+                        .cornerRadius(K.Size.cornerRadius)
                 } else if phase.error != nil {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: K.Size.cornerRadius)
                         .fill(.gray)
                 } else {
                     ProgressView().progressViewStyle(.circular)
                 }
             }
         } else {
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: K.Size.cornerRadius)
                 .fill(.gray)
         }
     }

@@ -11,17 +11,17 @@ struct ArtistList: View {
     @Binding var artists: [Artist]
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: K.Spacing.contentSpacing) {
             ForEach(artists, id: \.id) { artist in
-                HStack(spacing: 30) {
+                HStack(spacing: K.Spacing.contentSpacing) {
                     ArtistImage(image: artist.images.first)
-                        .frame(width: 100, height: 100)
-                    VStack(alignment: .leading, spacing: 10) {
+                        .frame(width: K.Size.listImage, height: K.Size.listImage)
+                    VStack(alignment: .leading, spacing: K.Spacing.innerSpacing) {
                         Text(artist.name)
                             .font(.title2)
                             .bold()
                         HStack {
-                            ForEach(artist.genres.prefix(3), id: \.self) { genre in
+                            ForEach(artist.genres.prefix(K.Limit.genres), id: \.self) { genre in
                                 GenreTag(genre: genre)
                             }
                         }

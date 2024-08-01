@@ -12,10 +12,17 @@ struct GenreTag: View {
     var body: some View {
         Text(genre)
             .font(.footnote)
-            .padding(.init(top: 4, leading: 7, bottom: 4, trailing: 7))
+            .padding(
+                .init(
+                    top: K.Padding.tagV,
+                    leading: K.Padding.tagH,
+                    bottom: K.Padding.tagV,
+                    trailing: K.Padding.tagH
+                )
+            )
             .lineLimit(1)
             .background(
-                RoundedRectangle(cornerRadius: 10).stroke()
+                RoundedRectangle(cornerRadius: K.Size.tagCornerRadius).stroke()
             )
     }
 }
