@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var artists = Artists(artists: [])
-    @State var vm = HomeViewModel()
+    @ObservedObject var vm = HomeViewModel(apiService: APIManager())
     
     var body: some View {
         NavigationView {
             ZStack(alignment: .topLeading) {
                 GradientBackground(color: .blue)
                 ScrollView {
-                    VStack(alignment: .leading) {
+                    LazyVStack(alignment: .leading) {
                         HomeHeader()
                             .padding()
-                        ArtistList(artists: $artists.artists)
+                        ArtistList(artists: $vm.artistResponse.artists)
                     }
                 }
             }
         }
         .task {
-            await Auth.shared.requestToken()
-            artists = await vm.fetchArtists()
+            await vm.fetchAndSaveToken()
+            await vm.fetchArtists()
         }
     }
     
@@ -42,9 +41,9 @@ struct HomeView: View {
             }
         }
     }
-   
+    
 }
 
 #Preview {
-    HomeView(artists: Artists(artists: []))
+    HomeView()
 }

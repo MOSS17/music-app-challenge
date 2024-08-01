@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum NetworkError: Error {  // 2
+enum NetworkError: Error {
     case badUrl
     case invalidRequest
     case badResponse
     case badStatus
+    case noData
     case failedToDecodeResponse
 }
