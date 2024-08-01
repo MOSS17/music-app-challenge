@@ -14,6 +14,6 @@ extension Artist {
     ]
 }
 
-extension Artists {
-    static let empty = Artists(artists: [])
+extension ArtistResponse {
+    static let empty = ArtistResponse(artists: [])
 }

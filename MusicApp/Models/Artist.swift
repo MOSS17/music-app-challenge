@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Artist: Codable {
+struct Artist: Codable, Equatable {
     let id: String
     let name: String
     let images: [ImageObject]
@@ -15,6 +15,6 @@ struct Artist: Codable {
     let followers: FollowersObject
 }
 
-struct Artists: Codable {
+struct ArtistResponse: Codable {
     var artists: [Artist]
 }
