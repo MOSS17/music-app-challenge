@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-class HomeViewModel: ObservableObject { 
+class HomeViewModel: ObservableObject {
     func fetchArtists() async -> Artists {
-        guard let url = (URL(string: "https://api.spotify.com/v1/artists/?ids=2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6")) else {
+        guard let url = (URL(string: SpotifyEndpoints.artists.rawValue)) else {
             print("URL didn't work")
             return Artists.empty
         }
         var apiRequest = URLRequest(url: url)
         apiRequest.httpMethod = "GET"
-        let token = "BQBrNN1__lvpstDhXVmI9ghVHOfANxXUwCH7Dio1gfnbbEXK-_Hg5PPfvpgn157d3AUzPD3mHh5lFMCwjUuXiinGFc13lykd55iDYmnM0r75ivpo30c"
-        apiRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let token = KeychainWrapper.standard.string(forKey: "token")
+        apiRequest.setValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, result) = try await URLSession.shared.data(for: apiRequest)

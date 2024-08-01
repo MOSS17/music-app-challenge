@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var artists: Artists
-    
+    @State var artists = Artists(artists: [])
     @State var vm = HomeViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .topLeading) {
@@ -25,6 +25,7 @@ struct HomeView: View {
             }
         }
         .task {
+            await Auth.shared.requestToken()
             artists = await vm.fetchArtists()
         }
     }
@@ -33,23 +34,15 @@ struct HomeView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 Text("This is")
-                    .font(.system(size: 64, weight: .bold))
+                    .font(.system(size: K.FontSize.header, weight: .bold))
                     .foregroundStyle(.white)
                 Text("You")
-                    .font(.system(size: 64, weight: .bold))
+                    .font(.system(size: K.FontSize.header, weight: .bold))
                     .foregroundStyle(.white)
             }
         }
     }
    
-}
-
-enum NetworkError: Error {  // 2
-    case badUrl
-    case invalidRequest
-    case badResponse
-    case badStatus
-    case failedToDecodeResponse
 }
 
 #Preview {
