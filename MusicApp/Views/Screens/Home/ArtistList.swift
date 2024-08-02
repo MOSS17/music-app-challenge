@@ -11,14 +11,14 @@ struct ArtistList: View {
     @Binding var artists: [Artist]
     
     var body: some View {
-        VStack(spacing: K.Spacing.contentSpacing) {
+        VStack(spacing: K.Spacing.content) {
             ForEach(artists, id: \.id) { artist in
                 NavigationLink(destination: ArtistDetailsView(artist: .constant(artist))) {
-                    HStack(spacing: K.Spacing.contentSpacing) {
+                    HStack(spacing: K.Spacing.content) {
                         ImageView(urlString: artist.images.first?.url, backgroundColor: .constant(.primary))
                             .frame(width: K.Size.listImage, height: K.Size.listImage)
                             .cornerRadius(K.Size.cornerRadius)
-                        VStack(alignment: .leading, spacing: K.Spacing.innerSpacing) {
+                        VStack(alignment: .leading, spacing: K.Spacing.inner) {
                             Text(artist.name)
                                 .font(.title2)
                                 .bold()
