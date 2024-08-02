@@ -13,13 +13,16 @@ struct K {
     }
     
     struct Spacing {
-        static let contentSpacing = CGFloat(30)
-        static let innerSpacing = CGFloat(10)
+        static let content = CGFloat(30)
+        static let inner = CGFloat(10)
+        static let headerImage = CGFloat(60)
     }
     
     struct Size {
         static let listImage = CGFloat(100)
+        static let detailsImage = CGFloat(200)
         static let cornerRadius = CGFloat(20)
+        static let detailsCornerRadius = CGFloat(40)
         static let tagCornerRadius = CGFloat(10)
     }
     
@@ -30,5 +33,6 @@ struct K {
     
     struct Limit {
         static let genres = 3
+        static let albums = 5
     }
 }

@@ -9,6 +9,10 @@ import XCTest
 @testable import MusicApp
 
 class MockAPIService: APIService {
+    func fetchArtistAlbums(artistsId: String, completion: @escaping (Result<AlbumResponse, any Error>) -> Void) {
+        return
+    }
+    
     func requestAndSaveToken(completion: @escaping (Result<Bool, any Error>) -> Void) {
         completion(.success(true))
     }

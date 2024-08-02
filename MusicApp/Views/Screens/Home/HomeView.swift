@@ -23,6 +23,7 @@ struct HomeView: View {
                 }
             }
         }
+        .accentColor(.white)
         .task {
             await vm.fetchAndSaveToken()
             await vm.fetchArtists()
