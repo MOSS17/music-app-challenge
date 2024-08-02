@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Album: Codable {
+struct Album: Codable, Equatable {
     let id: String
     let name: String
     let images: [ImageObject]

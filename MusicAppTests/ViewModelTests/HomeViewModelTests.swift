@@ -8,28 +8,18 @@
 import XCTest
 @testable import MusicApp
 
-class MockAPIService: APIService {
-    func fetchArtistAlbums(artistsId: String, completion: @escaping (Result<AlbumResponse, any Error>) -> Void) {
-        return
-    }
-    
-    func requestAndSaveToken(completion: @escaping (Result<Bool, any Error>) -> Void) {
-        completion(.success(true))
-    }
-    
-    func fetchArtists(completion: @escaping (Result<ArtistResponse, any Error>) -> Void) {
-        completion(.success(ArtistResponse(artists: Artist.mockedData)))
-    }
-}
-
 final class HomeViewModelTest: XCTestCase {
     private var viewModel: HomeViewModel!
     private var apiService: MockAPIService!
+    private var failViewModel: HomeViewModel!
+    private var failApiService: MockAPIFailService!
     
     override func setUp() {
         super.setUp()
         apiService = MockAPIService()
+        failApiService = MockAPIFailService()
         self.viewModel = HomeViewModel(apiService: apiService)
+        self.failViewModel = HomeViewModel(apiService: failApiService)
     }
     
     override func tearDown() {
@@ -47,6 +37,11 @@ final class HomeViewModelTest: XCTestCase {
         XCTAssertEqual(Artist.mockedData, viewModel.artistResponse.artists)
     }
     
+    func testFetchArtistFail() async {
+        await failViewModel.fetchArtists()
+        XCTAssertEqual(viewModel.artistResponse.artists, [])
+    }
+    
     func testRequestTokenSuccess() async {
         let expectation = XCTestExpectation(description: "request token service is successful")
         
@@ -60,11 +55,24 @@ final class HomeViewModelTest: XCTestCase {
         }
     }
     
+    func testRequestTokenFail() async {
+        let expectation = XCTestExpectation(description: "request token service fails")
+        
+        failApiService.requestAndSaveToken { completion in
+            switch completion {
+            case .success:
+                XCTFail()
+            case .failure:
+                expectation.fulfill()
+            }
+        }
+    }
+    
     func testArtistDetails() async {
         await viewModel.fetchArtists()
         let artist = viewModel.artistResponse.artists.first
         
-        XCTAssertEqual(artist?.id, "1")
+        XCTAssertEqual(artist?.id, "4Z8W4fKeB5YxbusRsdQVPb")
         XCTAssertEqual(artist?.name, "John")
         XCTAssertEqual(artist?.images.first?.url, "https://static.wikia.nocookie.net/duckbreeds/images/0/04/CallDuckHeadshot.jpg/revision/latest?cb=20100823210932")
         XCTAssertEqual(artist?.genres, ["art rock", "alternative rock", "Mac", "SC"])

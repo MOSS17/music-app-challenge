@@ -17,3 +17,11 @@ extension Artist {
 extension ArtistResponse {
     static let empty = ArtistResponse(artists: [])
 }
+
+extension Album {
+    static let mockedData: [Album] = [
+    Album(id: "1", name: "Best Album", images: [], releaseDate: "2023-02-24", totalTracks: 10),
+    Album(id: "2", name: "Worst Album", images: [], releaseDate: "2023-12-25", totalTracks: 2),
+    Album(id: "3", name: "Middle Album", images: [], releaseDate: "2020-02-24", totalTracks: 8),
+    ]
+}
