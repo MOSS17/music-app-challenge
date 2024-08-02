@@ -10,7 +10,7 @@ import SwiftUI
 struct GenreTag: View {
     var genre: String
     var body: some View {
-        Text(genre)
+        Text(genre.capitalized)
             .font(.footnote)
             .padding(
                 .init(

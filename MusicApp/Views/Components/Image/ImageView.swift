@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ImageView: View {
-    @ObservedObject var imageViewModel: ImageViewModel
+    @StateObject private var imageViewModel: ImageViewModel
     @Binding var backgroundColor: Color
     
     init(urlString: String?, backgroundColor: Binding<Color>) {
-        imageViewModel = ImageViewModel(urlString: urlString)
+        _imageViewModel = StateObject(wrappedValue: ImageViewModel(urlString: urlString))
         self._backgroundColor = backgroundColor
     }
     
