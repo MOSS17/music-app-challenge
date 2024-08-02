@@ -19,7 +19,9 @@ struct K {
     
     struct Size {
         static let listImage = CGFloat(100)
+        static let detailsImage = CGFloat(200)
         static let cornerRadius = CGFloat(20)
+        static let detailsCornerRadius = CGFloat(40)
         static let tagCornerRadius = CGFloat(10)
     }
     

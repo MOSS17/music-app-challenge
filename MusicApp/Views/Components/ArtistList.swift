@@ -13,22 +13,25 @@ struct ArtistList: View {
     var body: some View {
         VStack(spacing: K.Spacing.contentSpacing) {
             ForEach(artists, id: \.id) { artist in
-                HStack(spacing: K.Spacing.contentSpacing) {
-                    ArtistImage(image: artist.images.first)
-                        .frame(width: K.Size.listImage, height: K.Size.listImage)
-                    VStack(alignment: .leading, spacing: K.Spacing.innerSpacing) {
-                        Text(artist.name)
-                            .font(.title2)
-                            .bold()
-                        HStack {
-                            ForEach(artist.genres.prefix(K.Limit.genres), id: \.self) { genre in
-                                GenreTag(genre: genre)
+                NavigationLink(destination: ArtistDetailsView(artist: .constant(artist))) {
+                    HStack(spacing: K.Spacing.contentSpacing) {
+                        ImageView(urlString: artist.images.first?.url, backgroundColor: .constant(.primary))
+                            .frame(width: K.Size.listImage, height: K.Size.listImage)
+                            .cornerRadius(K.Size.cornerRadius)
+                        VStack(alignment: .leading, spacing: K.Spacing.innerSpacing) {
+                            Text(artist.name)
+                                .font(.title2)
+                                .bold()
+                            HStack {
+                                ForEach(artist.genres.prefix(K.Limit.genres), id: \.self) { genre in
+                                    GenreTag(genre: genre)
+                                }
                             }
                         }
+                        Spacer()
                     }
-                    Spacer()
+                    .foregroundStyle(.white)
                 }
-                .foregroundStyle(.white)
             }
         }
         .padding(.all)
