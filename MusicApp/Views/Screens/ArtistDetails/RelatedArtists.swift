@@ -22,6 +22,7 @@ struct RelatedArtists: View {
                                 Text(artist.name)
                                     .font(.title2)
                                     .bold()
+                                    .frame(maxWidth: K.Size.listImage)
                         }
                         .foregroundStyle(.white)
                     }

@@ -14,20 +14,27 @@ struct HomeView: View {
         NavigationView {
             ZStack(alignment: .topLeading) {
                 GradientBackground(color: .blue)
-                ScrollView {
-                    LazyVStack(alignment: .leading) {
-                        HomeHeader()
-                            .padding()
-                        ArtistList(artists: $vm.artistResponse.artists)
+                if vm.token == nil {
+                    Text("Unable to get token. Check secrets keys.")
+                        .bold()
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                } else {
+                    ScrollView {
+                        LazyVStack(alignment: .leading) {
+                            HomeHeader()
+                                .padding()
+                            ArtistList(artists: $vm.artistResponse.artists)
+                        }
                     }
                 }
             }
             .navigationViewStyle(.stack)
         }
         .accentColor(.white)
-        .task {
-            await vm.fetchAndSaveToken()
-            await vm.fetchArtists()
+        .onAppear {
+            vm.fetchAndSaveToken()
+            vm.fetchArtists()
         }
     }
     
