@@ -11,7 +11,7 @@ struct ArtistDetailsView: View {
     @Binding var artist: Artist
     @State private var bgColor: Color = .blue
     
-    @ObservedObject var vm = ArtistDetailsViewModel(apiService: APIManager())
+    @StateObject private var vm = ArtistDetailsViewModel(apiService: APIManager())
     
     var body: some View {
         ZStack {
@@ -36,13 +36,20 @@ struct ArtistDetailsView: View {
                     }
                     .padding()
                     AlbumList(albums: $vm.albumsResponse.items)
+                    Text("Related Artists")
+                        .font(.title)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                    RelatedArtists(artists: $vm.relatedArtists.artists)
                 }
                 .padding(.top, K.Spacing.headerImage)
                 .foregroundStyle(.white)
             }
         }
-        .task {
-            await vm.fetchArtistAlbums(artistId: artist.id)
+        .onAppear() {
+            vm.fetchArtistAlbums(artistId: artist.id)
+            vm.fetchRelatedArtists(artistId: artist.id)
         }
     }
 }
