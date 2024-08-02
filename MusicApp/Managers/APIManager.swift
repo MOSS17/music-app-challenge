@@ -25,6 +25,7 @@ class APIManager: APIService {
         ]
         
         guard let url = (URL(string: SpotifyEndpoints.token.rawValue)) else {
+            KeychainWrapper.standard.removeObject(forKey: "token")
             completion(.failure(NetworkError.badUrl))
             return
         }
@@ -46,6 +47,7 @@ class APIManager: APIService {
                 KeychainWrapper.standard.set(token.accessToken, forKey: "token")
                 completion(.success(true))
             } catch {
+                KeychainWrapper.standard.removeObject(forKey: "token")
                 completion(.failure(NetworkError.failedToDecodeResponse))
             }
         }.resume()

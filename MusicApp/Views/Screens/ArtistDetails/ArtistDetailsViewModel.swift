@@ -21,10 +21,14 @@ class ArtistDetailsViewModel: ObservableObject {
         apiService.fetchArtistAlbums(artistId: artistId) { result in
             switch result {
             case .success(let albums):
-                self.albumsResponse = albums 
+                DispatchQueue.main.async {
+                    self.albumsResponse = albums
+                }
             case .failure:
                 print(result)
-                self.albumsResponse = AlbumResponse(items: [])
+                DispatchQueue.main.async {
+                    self.albumsResponse = AlbumResponse(items: [])
+                }
             }
         }
     }
@@ -33,10 +37,14 @@ class ArtistDetailsViewModel: ObservableObject {
         apiService.fetchRelatedArtists(artistId: artistId) { result in
             switch result {
             case .success(let artists):
-                self.relatedArtists = artists
+                DispatchQueue.main.async {
+                    self.relatedArtists = artists
+                }
             case .failure:
                 print(result)
-                self.relatedArtists = ArtistResponse(artists: [])
+                DispatchQueue.main.async {
+                    self.relatedArtists = ArtistResponse(artists: [])
+                }
             }
         }
     }
