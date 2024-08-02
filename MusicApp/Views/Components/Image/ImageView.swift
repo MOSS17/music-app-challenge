@@ -22,13 +22,18 @@ struct ImageView: View {
     
     var body: some View {
         ZStack {
-            Image(uiImage: imageViewModel.image ?? UIImage())
-                .resizable()
-                .task() {
-                    DispatchQueue.main.async {
-                        backgroundColor = Color(uiColor:  imageViewModel.image?.averageColor ?? .blue)
+            if imageViewModel.isLoading {
+                ProgressView().progressViewStyle(.circular)
+                    .foregroundStyle(.white)
+            } else {
+                Image(uiImage: imageViewModel.image!)
+                    .resizable()
+                    .task() {
+                        DispatchQueue.main.async {
+                            backgroundColor = Color(uiColor:  imageViewModel.image?.averageColor ?? .blue)
+                        }
                     }
-                }
+            }
         }
     }
 }

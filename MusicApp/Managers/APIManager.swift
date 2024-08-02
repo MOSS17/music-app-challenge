@@ -10,10 +10,10 @@ import Foundation
 protocol APIService {
     func requestAndSaveToken(completion: @escaping (Result<Bool, any Error>) -> Void)
     func fetchArtists(completion: @escaping (Result<ArtistResponse, Error>) -> Void)
+    func fetchArtistAlbums(artistsId: String, completion: @escaping (Result<AlbumResponse, Error>) -> Void)
 }
 
 class APIManager: APIService {
-    
     func requestAndSaveToken(completion: @escaping (Result<Bool, any Error>) -> Void) {
         let requestHeaders: [String:String] = ["Authorization": SPOTIFY_API_AUTH_KEY, "Content-Type": "application/x-www-form-urlencoded"]
         
@@ -71,6 +71,36 @@ class APIManager: APIService {
             DispatchQueue.main.async {
                 if let artistResponse = try? JSONDecoder().decode(ArtistResponse.self, from: data) {
                     completion(.success(artistResponse))
+                } else {
+                    completion(.failure(NetworkError.failedToDecodeResponse))
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchArtistAlbums(artistsId artistId: String, completion: @escaping (Result<AlbumResponse, any Error>) -> Void) {
+        guard let url = (URL(string: "\(SpotifyEndpoints.albums.rawValue)\(artistId)/albums?limit=\(K.Limit.albums)")) else {
+            completion(.failure(NetworkError.badUrl))
+            return
+        }
+
+        var apiRequest = URLRequest(url: url)
+        apiRequest.httpMethod = "GET"
+        let token = KeychainWrapper.standard.string(forKey: "token")
+        apiRequest.setValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: apiRequest) { data, res, error in
+            guard let response = res as? HTTPURLResponse else { return completion(.failure(NetworkError.badResponse)) }
+            guard response.statusCode >= 200 && response.statusCode < 300 else { return completion(.failure(NetworkError.badStatus)) }
+            guard let data = data else {
+                completion(.failure(NetworkError.noData))
+                return
+            }
+            DispatchQueue.main.async {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let albumsResponse = try? decoder.decode(AlbumResponse.self, from: data) {
+                    completion(.success(albumsResponse))
                 } else {
                     completion(.failure(NetworkError.failedToDecodeResponse))
                 }

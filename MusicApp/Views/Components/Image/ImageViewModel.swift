@@ -9,6 +9,7 @@ import SwiftUI
 
 class ImageViewModel: ObservableObject {
     @Published var image: UIImage?
+    @Published var isLoading = false
 
     private var imageCache: NSCache<NSString, UIImage>?
 
@@ -17,11 +18,12 @@ class ImageViewModel: ObservableObject {
     }
 
     private func loadImage(urlString: String?) {
+        isLoading = true
         guard let urlString = urlString else { return }
 
         if let imageFromCache = getImageFromCache(from: urlString) {
             self.image = imageFromCache
-            print(self.image?.averageColor! as Any)
+            isLoading = false
             return
         }
 
@@ -46,6 +48,7 @@ class ImageViewModel: ObservableObject {
                 guard let loadedImage = UIImage(data: data) else { return }
                 self?.image = loadedImage
                 self?.setImageCache(image: loadedImage, key: urlString)
+                self?.isLoading = false
             }
         }.resume()
     }
