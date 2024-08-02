@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var vm = HomeViewModel(apiService: APIManager())
+    @StateObject var vm = HomeViewModel(apiService: APIManager())
     
     var body: some View {
         NavigationView {
@@ -22,6 +22,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .navigationViewStyle(.stack)
         }
         .accentColor(.white)
         .task {

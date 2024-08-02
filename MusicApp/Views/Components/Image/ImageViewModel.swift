@@ -18,7 +18,6 @@ class ImageViewModel: ObservableObject {
     }
 
     private func loadImage(urlString: String?) {
-        isLoading = true
         guard let urlString = urlString else { return }
 
         if let imageFromCache = getImageFromCache(from: urlString) {
@@ -31,6 +30,7 @@ class ImageViewModel: ObservableObject {
     }
 
     private func loadImageFromURL(urlString: String) {
+        isLoading = true
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in

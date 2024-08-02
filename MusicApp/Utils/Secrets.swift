@@ -1,8 +1,4 @@
-//
-//  Secrets.swift
-//  MusicApp
-//
-//  Created by Miguel Sandoval on 01/08/24.
-//
 
-import Foundation
+let SPOTIFY_API_CLIENT_ID = "SPOTIFY_API_CLIENT_ID"
+let SPOTIFY_API_SECRET_KEY = "SPOTIFY_API_SECRET_KEY"
+let SPOTIFY_API_AUTH_KEY = "Basic \((SPOTIFY_API_CLIENT_ID + ":" + SPOTIFY_API_SECRET_KEY).data(using: .utf8)!.base64EncodedString())"

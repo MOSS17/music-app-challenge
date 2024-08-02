@@ -9,21 +9,34 @@ import Foundation
 
 class ArtistDetailsViewModel: ObservableObject {
     @Published var albumsResponse: AlbumResponse = AlbumResponse(items: [])
+    @Published var relatedArtists: ArtistResponse = ArtistResponse(artists: [])
+    
     private let apiService: APIService
     
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-    func fetchArtistAlbums(artistId: String) async {
-        apiService.fetchArtistAlbums(artistsId: artistId) { result in
+    func fetchArtistAlbums(artistId: String) {
+        apiService.fetchArtistAlbums(artistId: artistId) { result in
             switch result {
             case .success(let albums):
-                self.albumsResponse = albums
-                
+                self.albumsResponse = albums 
             case .failure:
                 print(result)
                 self.albumsResponse = AlbumResponse(items: [])
+            }
+        }
+    }
+    
+    func fetchRelatedArtists(artistId: String) {
+        apiService.fetchRelatedArtists(artistId: artistId) { result in
+            switch result {
+            case .success(let artists):
+                self.relatedArtists = artists
+            case .failure:
+                print(result)
+                self.relatedArtists = ArtistResponse(artists: [])
             }
         }
     }
