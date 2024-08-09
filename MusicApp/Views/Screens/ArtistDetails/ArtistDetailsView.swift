@@ -47,9 +47,9 @@ struct ArtistDetailsView: View {
                 .foregroundStyle(.white)
             }
         }
-        .onAppear() {
-            vm.fetchArtistAlbums(artistId: artist.id)
-            vm.fetchRelatedArtists(artistId: artist.id)
+        .task {
+            await vm.fetchArtistAlbums(artistId: artist.id)
+            await vm.fetchRelatedArtists(artistId: artist.id)
         }
     }
 }

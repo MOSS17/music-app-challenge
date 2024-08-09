@@ -17,34 +17,26 @@ class ArtistDetailsViewModel: ObservableObject {
         self.apiService = apiService
     }
     
-    func fetchArtistAlbums(artistId: String) {
+    func fetchArtistAlbums(artistId: String) async {
         apiService.fetchArtistAlbums(artistId: artistId) { result in
             switch result {
             case .success(let albums):
-                DispatchQueue.main.async {
-                    self.albumsResponse = albums
-                }
+                self.albumsResponse = albums
             case .failure:
                 print(result)
-                DispatchQueue.main.async {
-                    self.albumsResponse = AlbumResponse(items: [])
-                }
+                self.albumsResponse = AlbumResponse(items: [])
             }
         }
     }
     
-    func fetchRelatedArtists(artistId: String) {
+    func fetchRelatedArtists(artistId: String) async {
         apiService.fetchRelatedArtists(artistId: artistId) { result in
             switch result {
             case .success(let artists):
-                DispatchQueue.main.async {
-                    self.relatedArtists = artists
-                }
+                self.relatedArtists = artists
             case .failure:
                 print(result)
-                DispatchQueue.main.async {
-                    self.relatedArtists = ArtistResponse(artists: [])
-                }
+                self.relatedArtists = ArtistResponse(artists: [])
             }
         }
     }

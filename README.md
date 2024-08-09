@@ -23,6 +23,18 @@ If you don't have these you'll have to create an app on Spotify for Developers. 
 - You should be able to see your Client id and Client secret.
 - Add these to the project.
 
+## Project decisions
+The project was created with limited time constraints and its purpose is showcasing different skills that are important for iOS development.
+### Architecture
+Clean Architecture and MVVM were used in this project with scalability and maintanibility in mind. The idea being to have an organized project in which other developers may join and start collaborating without much effort.
+### Performance
+- Instruments was used to measure the performance of the app, trying to catch any memory leaks and unnecessary network calls.
+- Images are loaded and cached to improve app performance and experience.
+### Testing
+Both unit tests and UI tests were only for critical features, leading to a poor code coverage but showcasing what could be done given more time.
+### Light mode
+Light mode was considered but was quickly dropped due to the limited time. This allowed for a more detailed design but no Light mode, also took inspiration from the Spotify app.
+
 ## Architecture and patterns
 ### MVVM
 The MVVM architecture was chosen as a way of keeping the project organized improving its maintanability and scalability. 
@@ -30,6 +42,10 @@ Separating concerns keeps the code cleaner and help in making the code easier to
 
 ### Dependency injection
 Dependency injection allows the service layer to be injected onto the ViewModel which improves testability a lot while also leading to cleaner code at the cost of a bit more complexity.
+
+## CI/CD
+### Fastlane and Github Actions
+Currently there's only a single lane that runs the project's unit tests triggered by a Github Action whenever a Pull Request is made to the `main` branch.
 
 ## UI showcase
 This app was inspired mainly on Spotify and other designs found on Dribbble and Behance.

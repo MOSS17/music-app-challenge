@@ -32,9 +32,9 @@ struct HomeView: View {
             .navigationViewStyle(.stack)
         }
         .accentColor(.white)
-        .onAppear {
-            vm.fetchAndSaveToken()
-            vm.fetchArtists()
+        .task {
+            await vm.fetchAndSaveToken()
+            await vm.fetchArtists()
         }
     }
     

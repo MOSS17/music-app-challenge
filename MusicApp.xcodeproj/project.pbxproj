@@ -68,7 +68,7 @@
 		1F3C9F0B2C589DD400D6EAA7 /* MusicAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3C9F152C589DD400D6EAA7 /* MusicAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3C9F192C589DD400D6EAA7 /* MusicAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAppUITests.swift; sourceTree = "<group>"; };
-		1F8637382C6606C600349C19 /* MusicAppTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MusicAppTests.xctestplan; sourceTree = "<group>"; };
+		1F86373C2C6627FD00349C19 /* MusicAppTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MusicAppTestsPlan.xctestplan; sourceTree = "<group>"; };
 		1F87AF932C5C28D8004F6423 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		1F87AF952C5C4F64004F6423 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		1F87AF982C5C5DB2004F6423 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		1F3C9EF22C589DD100D6EAA7 = {
 			isa = PBXGroup;
 			children = (
-				1F8637392C66071200349C19 /* Schemes */,
+				1F86373B2C66276900349C19 /* Schemes */,
 				1F3C9EFD2C589DD100D6EAA7 /* MusicApp */,
 				1F3C9F0E2C589DD400D6EAA7 /* MusicAppTests */,
 				1F3C9F182C589DD400D6EAA7 /* MusicAppUITests */,
@@ -215,10 +215,10 @@
 			path = MusicAppUITests;
 			sourceTree = "<group>";
 		};
-		1F8637392C66071200349C19 /* Schemes */ = {
+		1F86373B2C66276900349C19 /* Schemes */ = {
 			isa = PBXGroup;
 			children = (
-				1F8637382C6606C600349C19 /* MusicAppTests.xctestplan */,
+				1F86373C2C6627FD00349C19 /* MusicAppTestsPlan.xctestplan */,
 			);
 			path = Schemes;
 			sourceTree = "<group>";
