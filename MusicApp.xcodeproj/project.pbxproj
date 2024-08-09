@@ -157,7 +157,7 @@
 		1F3C9EF22C589DD100D6EAA7 = {
 			isa = PBXGroup;
 			children = (
-				1F8637392C66071200349C19 /* Schemes */,
+				1F86373A2C66207D00349C19 /* MusicAppTestsPlan.xctestplan */,
 				1F3C9EFD2C589DD100D6EAA7 /* MusicApp */,
 				1F3C9F0E2C589DD400D6EAA7 /* MusicAppTests */,
 				1F3C9F182C589DD400D6EAA7 /* MusicAppUITests */,
@@ -213,14 +213,6 @@
 				1F3C9F192C589DD400D6EAA7 /* MusicAppUITests.swift */,
 			);
 			path = MusicAppUITests;
-			sourceTree = "<group>";
-		};
-		1F8637392C66071200349C19 /* Schemes */ = {
-			isa = PBXGroup;
-			children = (
-				1F86373A2C66207D00349C19 /* MusicAppTestsPlan.xctestplan */,
-			);
-			path = Schemes;
 			sourceTree = "<group>";
 		};
 		1F87AF922C5C28C6004F6423 /* Managers */ = {
