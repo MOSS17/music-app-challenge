@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "A2996E65-2E6B-4FC6-BB4E-D3EF5B0BF994",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MusicApp.xcodeproj",
+      "identifier" : "1F3C9EFA2C589DD100D6EAA7",
+      "name" : "MusicApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MusicApp.xcodeproj",
+        "identifier" : "1F3C9F0A2C589DD400D6EAA7",
+        "name" : "MusicAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

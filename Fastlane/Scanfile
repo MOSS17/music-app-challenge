@@ -1,0 +1,8 @@
+workspace "MusicApp.xcodeproj/project.xcworkspace"
+scheme "MusicApp"
+sdk "iphonesimulator"
+device "iPhone 13"
+code_coverage true
+xcargs '-parallelizeTargets'
+prelaunch_simulator true
+derived_data_path "Build/"
