@@ -33,18 +33,18 @@ class ArtistDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.albumsResponse.items, [])
     }
     
-    func testFetchRelatedArtists() {
-        viewModel.fetchRelatedArtists(artistId: "artistId")
+    func testFetchRelatedArtists() async {
+        await viewModel.fetchRelatedArtists(artistId: "artistId")
         XCTAssertEqual(viewModel.relatedArtists.artists, Artist.mockedData)
     }
     
-    func testFetchAlbums() {
-        viewModel.fetchArtistAlbums(artistId: "artistId")
+    func testFetchAlbums() async {
+        await viewModel.fetchArtistAlbums(artistId: "artistId")
         XCTAssertEqual(viewModel.albumsResponse.items, Album.mockedData)
     }
     
     func testRelatedArtistDetails() async {
-        viewModel.fetchRelatedArtists(artistId: "artistId")
+        await viewModel.fetchRelatedArtists(artistId: "artistId")
         let artist = viewModel.relatedArtists.artists.first
         
         XCTAssertEqual(artist?.id, "4Z8W4fKeB5YxbusRsdQVPb")
@@ -55,7 +55,7 @@ class ArtistDetailsViewModelTests: XCTestCase {
     }
     
     func testAlbumDetails() async {
-        viewModel.fetchArtistAlbums(artistId: "artistId")
+        await viewModel.fetchArtistAlbums(artistId: "artistId")
         let album = viewModel.albumsResponse.items.first
         
         XCTAssertEqual(album?.id, "1")

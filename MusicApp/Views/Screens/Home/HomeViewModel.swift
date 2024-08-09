@@ -17,36 +17,28 @@ class HomeViewModel: ObservableObject {
         self.apiService = apiService
     }
     
-    func fetchAndSaveToken() {
+    func fetchAndSaveToken() async {
         apiService.requestAndSaveToken { result in
             switch result {
             case .success(_):
                 print("token has been saved")
-                DispatchQueue.main.async {
-                    self.token = KeychainWrapper.standard.string(forKey: "token")
-                }
+                self.token = KeychainWrapper.standard.string(forKey: "token")
                 return
             case .failure:
                 print(result)
-                DispatchQueue.main.async {
-                    self.token = nil
-                }
+                self.token = nil
                 return
             }
         }
     }
     
-    func fetchArtists() {
+    func fetchArtists() async {
         apiService.fetchArtists { result in
             switch result {
             case .success(let artists):
-                DispatchQueue.main.async {
-                    self.artistResponse = artists
-                }
+                self.artistResponse = artists
             case .failure:
-                DispatchQueue.main.async {
-                    self.artistResponse = ArtistResponse(artists: [])
-                }
+                self.artistResponse = ArtistResponse(artists: [])
             }
         }
     }
