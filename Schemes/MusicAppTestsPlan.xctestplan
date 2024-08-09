@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "A2996E65-2E6B-4FC6-BB4E-D3EF5B0BF994",
+      "id" : "57E85485-DC43-4A25-A1FA-571463AAC873",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:MusicApp.xcodeproj",
       "identifier" : "1F3C9EFA2C589DD100D6EAA7",
@@ -18,6 +17,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:MusicApp.xcodeproj",
         "identifier" : "1F3C9F0A2C589DD400D6EAA7",
